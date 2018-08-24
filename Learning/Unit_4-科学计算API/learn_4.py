@@ -1,48 +1,79 @@
 #================================================================
 # 简单的Numpy程序
 #----------------------------------------------------------------
+# import numpy as np 
+
+# # 数组
+# x1d = np.array([4,23,565])
+# print(x1d)
+# x2d = np.array(((1,2,3),(4,4,4),(7,7,7)))
+# print(x2d)
+# x = np.array([4,5,6])
+# y = np.array([1,2,3])
+# print(x+y)
+# print(x*y)
+# print(x-y)
+# print(x/y)
+# print(x%y)
+
+# # matrix子类可进行矩阵运算
+# x1 = np.array(((1,2,3),(1,2,3),(1,2,3)))
+# x2 = np.array(((1,2,3),(1,2,3),(1,2,3)))
+# print('First 2-D Array: x1')
+# print(x1)
+# print('Second 2-D Array: x2')
+# print(x2)
+# print('Array Multiplication') # 数组乘法：对应位置上的元素相乘
+# print(x1*x2)
+# mx1 = np.matrix(((1,2,3),(1,2,3),(1,2,3)))
+# mx2 = np.matrix(((1,2,3),(1,2,3),(1,2,3)))
+# print('Matrix Multiplication') # 矩阵乘法
+# print(mx1*mx2)
+
+# # 简单的统计函数
+# xt = np.random.randn(10) # 创建一个有10个随机元素的数组
+# print(xt)
+# mean = xt.mean()
+# print(mean)
+# std = xt.std()
+# print(std)
+# var = xt.var()
+# print(var)
+
+#----------------------------------------------------------------
+
+
+#================================================================
+# Scipy做统计 stats.describe
+#----------------------------------------------------------------
+# import scipy as sp 
+# import scipy.stats as st 
+
+# s = sp.randn(10)
+# n, min_max, mean, var, skew, kurt = st.describe(s)
+# print('Number of elements:', n)
+# print('Minimum:', min_max[0], ' Maximum:', min_max[1])
+# print('Mean:', mean)
+# print('Variance:', var)
+# print('Skewness:', skew)
+# print('Kurtosis:', kurt)
+
+#----------------------------------------------------------------
+
+
+#================================================================
+# Scipy优化函数    Rosenbrock的非凸函数用于检验优化算法的性能
+#----------------------------------------------------------------
 import numpy as np 
+from scipy.optimize import minimize
 
-# 数组
-x1d = np.array([4,23,565])
-print(x1d)
-x2d = np.array(((1,2,3),(4,4,4),(7,7,7)))
-print(x2d)
-x = np.array([4,5,6])
-y = np.array([1,2,3])
-print(x+y)
-print(x*y)
-print(x-y)
-print(x/y)
-print(x%y)
+# 定义Rosenbrock函数
+def rosenbrock(x):
+	return sum(100*(x[1:]-x[:-1]**2)**2 + (1-x[:-1])**2)
 
-# matrix子类可进行矩阵运算
-x1 = np.array(((1,2,3),(1,2,3),(1,2,3)))
-x2 = np.array(((1,2,3),(1,2,3),(1,2,3)))
-print('First 2-D Array: x1')
-print(x1)
-print('Second 2-D Array: x2')
-print(x2)
-print('Array Multiplication') # 数组乘法：对应位置上的元素相乘
-print(x1*x2)
-mx1 = np.matrix(((1,2,3),(1,2,3),(1,2,3)))
-mx2 = np.matrix(((1,2,3),(1,2,3),(1,2,3)))
-print('Matrix Multiplication') # 矩阵乘法
-print(mx1*mx2)
-#----------------------------------------------------------------
-
-
-#================================================================
-# 
-#----------------------------------------------------------------
-
-#----------------------------------------------------------------
-
-
-#================================================================
-# 
-#----------------------------------------------------------------
-
+x0 = np.array([1, 0.7, 0.8, 2.9, 1.1])
+res = minimize(rosenbrock, x0, method = 'nelder-mead', options = {'xtol':1e-8, 'disp':True})
+print(res.x)
 #----------------------------------------------------------------
 
 
