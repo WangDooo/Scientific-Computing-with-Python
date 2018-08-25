@@ -64,29 +64,65 @@
 #================================================================
 # Scipy优化函数    Rosenbrock的非凸函数用于检验优化算法的性能
 #----------------------------------------------------------------
-import numpy as np 
-from scipy.optimize import minimize
+# import numpy as np 
+# from scipy.optimize import minimize
 
-# 定义Rosenbrock函数
-def rosenbrock(x):
-	return sum(100*(x[1:]-x[:-1]**2)**2 + (1-x[:-1])**2)
+# # 定义Rosenbrock函数
+# def rosenbrock(x):
+# 	return sum(100*(x[1:]-x[:-1]**2)**2 + (1-x[:-1])**2)
 
-x0 = np.array([1, 0.7, 0.8, 2.9, 1.1])
-res = minimize(rosenbrock, x0, method = 'nelder-mead', options = {'xtol':1e-8, 'disp':True})
-print(res.x)
-#----------------------------------------------------------------
-
-
-#================================================================
-# 
-#----------------------------------------------------------------
+# x0 = np.array([1, 0.7, 0.8, 2.9, 1.1])
+# res = minimize(rosenbrock, x0, method = 'nelder-mead', options = {'xtol':1e-8, 'disp':True})
+# print(res.x)
 
 #----------------------------------------------------------------
 
 
 #================================================================
-# 
+# Scipy图像处理
 #----------------------------------------------------------------
+# from scipy import misc
+# import matplotlib.pyplot as plt
+
+# # 显示图片
+# l = misc.face()
+# plt.gray()
+# plt.imshow(l)
+# plt.show()
+
+#----------------------------------------------------------------
+
+
+#================================================================
+# Scipy图像的几何变换
+#----------------------------------------------------------------
+# import scipy 
+# from scipy import ndimage
+# import matplotlib.pyplot as plt
+# import numpy as np
+
+# lena = scipy.misc.imread('lena512.bmp')
+# lx, ly = lena.shape
+# crop_lena = lena[lx//4:-lx//4, ly//4:-ly//4]
+# crop_eyes_lena = lena[lx//2:int(-lx/2.2), int(ly//2.1):int(-ly/3.2)]
+# rotate_lena = ndimage.rotate(lena, 45)
+
+# # 四幅图 返回二维数组
+# f, axarr = plt.subplots(2, 2)
+# axarr[0,0].imshow(lena, cmap=plt.cm.gray)
+# axarr[0,0].axis('off')
+# axarr[0,0].set_title('Original Lena Image')
+# axarr[0,1].imshow(crop_lena, cmap=plt.cm.gray)
+# axarr[0,1].axis('off')
+# axarr[0,1].set_title('Cropped Lena')
+# axarr[1,0].imshow(crop_eyes_lena, cmap=plt.cm.gray)
+# axarr[1,0].axis('off')
+# axarr[1,0].set_title('Lena Cropped Eyes')
+# axarr[1,1].imshow(rotate_lena, cmap=plt.cm.gray)
+# axarr[1,1].axis('off')
+# axarr[1,1].set_title('45 Degree Rotated Lena')
+
+# plt.show() 
 
 #----------------------------------------------------------------
 
