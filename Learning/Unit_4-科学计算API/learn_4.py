@@ -182,35 +182,57 @@
 #================================================================
 # 数据分析和可视化示例
 #----------------------------------------------------------------
-import pandas as pd 
-import datetime
-import pandas_datareader.data as pdr
-# 将C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas_datareader
-# 下的fred.py文件中的pandas.core.common import is_list_like修改为pandas.api.types import is_list_like
-import fix_yahoo_finance as yf
-yf.pdr_override() #需要调用这个函数
+# import pandas as pd 
+# import datetime
+# import pandas_datareader.data as pdr
+# # 将C:\Users\Administrator\AppData\Local\Programs\Python\Python36\lib\site-packages\pandas_datareader
+# # 下的fred.py文件中的pandas.core.common import is_list_like修改为pandas.api.types import is_list_like
+# import fix_yahoo_finance as yf
 
-start = datetime.datetime(2014,10,1)
-end = datetime.datetime(2014,12,30)
+# yf.pdr_override() #需要调用这个函数
 
-apple = pdr.get_data_yahoo('AAPL', start, end)
-print(apple.head())
-apple.to_csv('apple-data.csv')
-df = pd.read_csv('apple-data.csv', index_col='Date', parse_dates=True)
-print(df.head())
+# start = datetime.datetime(2014,10,1)
+# end = datetime.datetime(2014,12,30)
+
+# apple = pdr.get_data_yahoo('AAPL', start, end)
+# print(apple.head())
+# apple.to_csv('apple-data.csv')
+# df = pd.read_csv('apple-data.csv', index_col='Date', parse_dates=True)
+# print(df.head())
 #----------------------------------------------------------------
 
 
 #================================================================
-# 
+# 二维图像
 #----------------------------------------------------------------
+# import pandas as pd
+# import matplotlib.pyplot as plt
 
+# df = pd.read_csv('apple-data.csv', index_col="Date", parse_dates=True)
+# df['H-L'] = df.High - df.Low
+# df['50MA'] = df['Close'].rolling(50).mean()
+# df[['Open','High','Low','Close','50MA']].plot()
+# plt.show()
 #----------------------------------------------------------------
 
 
 #================================================================
-# 
+# 三维图像
 #----------------------------------------------------------------
+import pandas as pd
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+df = pd.read_csv('apple-data.csv', parse_dates=True)
+df['H-L'] = df.High - df.Low
+df['50MA'] = df['Close'].rolling(50).mean()
+
+threedee = plt.figure().gca(projection='3d')
+threedee.scatter(df.index, df['H-L'], df['Close'])
+threedee.set_xlabel('Index')
+threedee.set_ylabel('H-L')
+threedee.set_zlabel('Close')
+plt.show()
 
 #----------------------------------------------------------------
 
