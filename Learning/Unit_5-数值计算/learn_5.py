@@ -137,13 +137,43 @@
 #================================================================
 # Numpy的数学模块
 #----------------------------------------------------------------
+# import numpy as np
+# from numpy import linalg as LA 
+
+# arr2d = np.array(((1,2,3),
+# 				  (1,1,1),
+# 				  (2,2,3)))
+# eig_val, eig_vec = LA.eig(arr2d)
+# print(eig_val) # 特征值
+# print(eig_vec) # 特征向量 v[:,i]列是w[i]的特征向量
+# print(LA.norm(arr2d))
+# print(LA.det(arr2d))
+# print(LA.inv(arr2d))
+# # 2x + 3y = 4
+# # 3x + 4y = 5
+# arr1 = np.array([[2,3],[3,4]])
+# arr2 = np.array([4,5])
+# results = np.linalg.solve(arr1,arr2)
+# print(results)
+# print(np.allclose(np.dot(arr1,results),arr2)) # 比较两个数组
 
 #----------------------------------------------------------------
 
 
 #================================================================
-# 
+# Numpy随机抽样模块的函数
 #----------------------------------------------------------------
+import numpy as np
+
+print(np.random.permutation(10)) # 随机排列一个序列
+print(np.random.randint(20,50,size=10))
+print(np.random.random_sample(10))
+print(np.random.chisquare(5,10)) # 自由度
+alpha, location_param = 4.,2
+print(np.random.pareto(alpha, 10)+location_param)
+print(np.random.standard_normal(20))
+mean, std_deviation = 4.,2
+print(np.random.lognormal(mean, std_deviation, 10))
 
 #----------------------------------------------------------------
 
