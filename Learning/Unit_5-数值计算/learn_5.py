@@ -163,44 +163,81 @@
 #================================================================
 # Numpy随机抽样模块的函数
 #----------------------------------------------------------------
-import numpy as np
+# import numpy as np
 
-print(np.random.permutation(10)) # 随机排列一个序列
-print(np.random.randint(20,50,size=10))
-print(np.random.random_sample(10))
-print(np.random.chisquare(5,10)) # 自由度
-alpha, location_param = 4.,2
-print(np.random.pareto(alpha, 10)+location_param)
-print(np.random.standard_normal(20))
-mean, std_deviation = 4.,2
-print(np.random.lognormal(mean, std_deviation, 10))
-
-#----------------------------------------------------------------
-
-
-#================================================================
-# 
-#----------------------------------------------------------------
+# print(np.random.permutation(10)) # 随机排列一个序列
+# print(np.random.randint(20,50,size=10))
+# print(np.random.random_sample(10))
+# print(np.random.chisquare(5,10)) # 自由度
+# alpha, location_param = 4.,2
+# print(np.random.pareto(alpha, 10)+location_param)
+# print(np.random.standard_normal(20))
+# mean, std_deviation = 4.,2
+# print(np.random.lognormal(mean, std_deviation, 10))
 
 #----------------------------------------------------------------
 
 
 #================================================================
-# 
+# Scipy 积分
 #----------------------------------------------------------------
+# import numpy as np
+# from scipy.integrate import quad
+
+# def integrand(x,a,b,c):
+# 	return a*x*x+b*x+c
+
+# a = 3
+# b = 4
+# c = 1
+# result = quad(integrand, 0, np.inf, args=(a,b,c)) # quad 通用积分
+# print(result)
+
 
 #----------------------------------------------------------------
 
 
 #================================================================
-# 
+# 聚类 Scipy 向量量化
 #----------------------------------------------------------------
+# from scipy.cluster.vq import kmeans, vq
+# from numpy.random import rand
+# from numpy import vstack, array
+# import pylab as pl
+
+# data_set = vstack((rand(50,2)+array([.5,.5]), rand(50,2)))
+# centroids_of_clusters,_ = kmeans(data_set,3)
+# index,_ = vq(data_set,centroids_of_clusters)
+# pl.plot(data_set[index==0,0], data_set[index==0,1],'ob',data_set[index==1,0], data_set[index==1,1],'or')
+# pl.plot(data_set[index==2,0], data_set[index==2,1],'og')
+# pl.plot(centroids_of_clusters[:,0],centroids_of_clusters[:,1],'sm',markersize=8)
+# pl.show()
+#----------------------------------------------------------------
+
+
+#================================================================
+# 层次聚类
+#----------------------------------------------------------------
+# import numpy
+# from numpy.random import rand
+# from matplotlib.pyplot import show
+# from scipy.spatial.distance import pdist
+# import scipy.cluster.hierarchy as sch
+
+# x = rand(8,80)
+# x[0:4,:] *= 2
+# print(x)
+# y = pdist(x)
+# print(y)
+# z = sch.linkage(y)
+# sch.dendrogram(z)
+# show()
 
 #----------------------------------------------------------------
 
 
 #================================================================
-# 
+# 曲线拟合
 #----------------------------------------------------------------
 
 #----------------------------------------------------------------
